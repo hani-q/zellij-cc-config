@@ -17,9 +17,9 @@ layout {
                 // Bar layout
                 format_left   "{mode} #[fg=$accent,bold]{session} #[fg=$muted]│ {tabs}"
                 format_center ""
-                format_right  "{command_claude}{command_cpu}{command_ram}{datetime}"
+                format_right  "{command_cc_session}{command_session_tokens}{command_claude}{command_billing}{command_monthly}{command_cpu}{command_ram}"
                 format_space  ""
-                format_hide_on_overlength "true"
+                format_hide_on_overlength "false"
                 format_precedence "lrc"
 
                 border_enabled  "false"
@@ -54,11 +54,35 @@ layout {
                 tab_fullscreen_indicator " 󰊓"
                 tab_floating_indicator   " 󰹙"
 
+                // Claude Code session info
+                command_cc_session_command   "bash /Users/q/.config/zellij/scripts/claude_session.sh"
+                command_cc_session_format    "#[fg=$blue]{stdout}"
+                command_cc_session_interval  "300"
+                command_cc_session_rendermode "static"
+
+                // Current session tokens
+                command_session_tokens_command   "bash /Users/q/.config/zellij/scripts/claude_session_tokens.sh"
+                command_session_tokens_format    "#[fg=$magenta]{stdout}"
+                command_session_tokens_interval  "300"
+                command_session_tokens_rendermode "static"
+
                 // Claude Code tokens
                 command_claude_command   "bash /Users/q/.config/zellij/scripts/claude_tokens.sh"
-                command_claude_format    "#[fg=$accent] {stdout} #[fg=$muted]│ "
+                command_claude_format    "#[fg=$accent] {stdout} #[fg=$muted]│ "
                 command_claude_interval  "300"
                 command_claude_rendermode "static"
+
+                // Billing block
+                command_billing_command   "bash /Users/q/.config/zellij/scripts/claude_billing.sh"
+                command_billing_format    "#[fg=$yellow]{stdout} "
+                command_billing_interval  "300"
+                command_billing_rendermode "static"
+
+                // Monthly spend
+                command_monthly_command   "bash /Users/q/.config/zellij/scripts/claude_monthly.sh"
+                command_monthly_format    "#[fg=$green]{stdout} #[fg=$muted]│ "
+                command_monthly_interval  "3600"
+                command_monthly_rendermode "static"
 
                 // CPU usage
                 command_cpu_command  "bash /Users/q/.config/zellij/scripts/cpu.sh"
@@ -68,7 +92,7 @@ layout {
 
                 // RAM usage
                 command_ram_command  "bash /Users/q/.config/zellij/scripts/ram.sh"
-                command_ram_format      "#[fg=$yellow] {stdout} #[fg=$muted]│ "
+                command_ram_format      "#[fg=$yellow] {stdout}"
                 command_ram_interval    "5"
                 command_ram_rendermode  "static"
 

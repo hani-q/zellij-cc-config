@@ -32,10 +32,14 @@ themes/claude.kdl       # Claude light and dark themes
 plugins/                # Pre-downloaded plugin binaries
   ├── zjstatus.wasm     # Custom status bar
   └── zellij-vertical-tabs.wasm
-scripts/                # Status bar scripts
-  ├── claude_tokens.sh  # Claude Code token usage
-  ├── cpu.sh            # CPU monitoring
-  └── ram.sh            # RAM monitoring
+scripts/                     # Status bar scripts
+  ├── claude_tokens.sh       # Daily token usage with model breakdown
+  ├── claude_session.sh      # Claude Code session info (slug + duration)
+  ├── claude_session_tokens.sh # Current session token usage
+  ├── claude_billing.sh      # 5-hour billing block progress
+  ├── claude_monthly.sh      # Monthly spend tracking
+  ├── cpu.sh                 # CPU monitoring
+  └── ram.sh                 # RAM monitoring
 ```
 
 ### Key Features
@@ -67,11 +71,48 @@ scripts/                # Status bar scripts
 
 Status bar scripts require:
 
-- `bunx ccusage` for Claude token tracking (install: `bun install -g @anthropic-ai/ccusage`)
+- `bunx better-ccusage` for enhanced Claude token tracking with breakdown (install: `bun install -g @anthropic-ai/better-ccusage`)
 - macOS `vm_stat` for RAM monitoring
 - Standard `ps` for CPU monitoring
 
-Scripts update every 5 minutes (300s) with caching to minimize overhead.
+Scripts update at different intervals with caching to minimize overhead:
+
+- Token scripts: Every 5 minutes (300s)
+- Monthly spend: Every hour (3600s)
+- CPU/RAM: Every 5 seconds
+
+#### Token Display Formats
+
+The status bar shows multiple Claude Code metrics when running in a Claude Code session:
+
+**Session Info**: `playful-stargazing-hare 2h34m`
+
+- Session slug and how long it's been running
+- Only visible when inside a Claude Code session
+
+**Current Session Tokens**: `📊 2K↓ 5M⚡ 1K↑ $0.45`
+
+- Tokens and cost for ONLY this session (resets on new session)
+- Helpful for tracking cost of current work
+- Only visible when inside a Claude Code session
+
+**Daily Total with Models**: `6K↓ 47M⚡ 4K↑ $9.99 (O:$6.50 S:$3.49)`
+
+- `6K↓` = Input tokens (new content sent to Claude)
+- `47M⚡` = Cache read tokens (reused context, 90% cheaper)
+- `4K↑` = Output tokens (Claude's response)
+- `$9.99` = Total cost for today
+- `(O:$6.50 S:$3.49)` = Cost breakdown by model (Opus vs Sonnet)
+
+**Billing Block**: `🕐 $12.45 (2h15m left)`
+
+- Cost in current 5-hour billing window
+- Time remaining before new block starts
+
+**Monthly Spend**: `📅 $234.56/mo`
+
+- Total spend for current month
+- Updates hourly
 
 ## Customization
 
