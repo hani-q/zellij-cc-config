@@ -1,0 +1,28 @@
+themes {
+    claude {
+        fg "#3D3929"
+        bg "#F9F6EE"
+        black "#3D3929"
+        red "#C4956A"
+        green "#DA7B4A"
+        yellow "#C4956A"
+        blue "#5A7BA5"
+        magenta "#9A6B8A"
+        cyan "#6B9A9A"
+        white "#F9F6EE"
+        orange "#DA7B4A"
+    }
+    claude-dark {
+        fg "#E8E0D0"
+        bg "#2B2519"
+        black "#1A1611"
+        red "#C4956A"
+        green "#DA7B4A"
+        yellow "#C4956A"
+        blue "#7B9CC0"
+        magenta "#B08AA0"
+        cyan "#7FB0B0"
+        white "#F9F6EE"
+        orange "#DA7B4A"
+    }
+}

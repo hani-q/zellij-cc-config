@@ -1,0 +1,86 @@
+layout {
+    default_tab_template {
+        pane size=2 borderless=true {
+            plugin location="file:/Users/q/.config/zellij/plugins/zjstatus.wasm" {
+                // Claude dark palette
+                color_bg      "#2B2519"
+                color_fg      "#E8E0D0"
+                color_accent  "#DA7B4A"
+                color_muted   "#7A7260"
+                color_green   "#7FA87F"
+                color_blue    "#7B9CC0"
+                color_magenta "#B08AA0"
+                color_yellow  "#C4956A"
+                color_dark    "#1A1611"
+                color_subtle  "#3D3520"
+
+                // Bar layout
+                format_left   "{mode} #[fg=$accent,bold]{session} #[fg=$muted]│ {tabs}"
+                format_center ""
+                format_right  "{command_claude}{command_cpu}{command_ram}{datetime}"
+                format_space  ""
+                format_hide_on_overlength "true"
+                format_precedence "lrc"
+
+                border_enabled  "false"
+
+                // Mode indicators — rounded pill
+                mode_normal        "#[fg=$green]#[bg=$green,fg=$dark,bold]  NORMAL #[bg=default,fg=$green]"
+                mode_locked        "#[fg=$muted]#[bg=$muted,fg=$dark,bold]  LOCKED #[bg=default,fg=$muted]"
+                mode_resize        "#[fg=$magenta]#[bg=$magenta,fg=$dark,bold] 󰩨 RESIZE #[bg=default,fg=$magenta]"
+                mode_pane          "#[fg=$blue]#[bg=$blue,fg=$dark,bold]  PANE #[bg=default,fg=$blue]"
+                mode_tab           "#[fg=$blue]#[bg=$blue,fg=$dark,bold] 󰓩 TAB #[bg=default,fg=$blue]"
+                mode_scroll        "#[fg=$yellow]#[bg=$yellow,fg=$dark,bold]  SCROLL #[bg=default,fg=$yellow]"
+                mode_enter_search  "#[fg=$yellow]#[bg=$yellow,fg=$dark,bold]  SEARCH #[bg=default,fg=$yellow]"
+                mode_search        "#[fg=$yellow]#[bg=$yellow,fg=$dark,bold]  SEARCH #[bg=default,fg=$yellow]"
+                mode_rename_tab    "#[fg=$blue]#[bg=$blue,fg=$dark,bold] 󰏫 RENAME #[bg=default,fg=$blue]"
+                mode_rename_pane   "#[fg=$blue]#[bg=$blue,fg=$dark,bold] 󰏫 RENAME #[bg=default,fg=$blue]"
+                mode_session       "#[fg=$magenta]#[bg=$magenta,fg=$dark,bold]  SESSION #[bg=default,fg=$magenta]"
+                mode_move          "#[fg=$magenta]#[bg=$magenta,fg=$dark,bold]  MOVE #[bg=default,fg=$magenta]"
+                mode_tmux          "#[fg=$accent]#[bg=$accent,fg=$dark,bold]  TMUX #[bg=default,fg=$accent]"
+
+                // Tabs — rounded pill
+                tab_normal              "#[fg=$subtle]#[bg=$subtle,fg=$muted] {index}:{name}{floating_indicator} #[bg=default,fg=$subtle]"
+                tab_normal_fullscreen   "#[fg=$subtle]#[bg=$subtle,fg=$muted] {index}:{name}{fullscreen_indicator} #[bg=default,fg=$subtle]"
+                tab_normal_sync         "#[fg=$subtle]#[bg=$subtle,fg=$muted] {index}:{name}{sync_indicator} #[bg=default,fg=$subtle]"
+
+                tab_active              "#[fg=$accent]#[bg=$accent,fg=$dark,bold] {index}:{name}{floating_indicator} #[bg=default,fg=$accent]"
+                tab_active_fullscreen   "#[fg=$accent]#[bg=$accent,fg=$dark,bold] {index}:{name}{fullscreen_indicator} #[bg=default,fg=$accent]"
+                tab_active_sync         "#[fg=$accent]#[bg=$accent,fg=$dark,bold] {index}:{name}{sync_indicator} #[bg=default,fg=$accent]"
+
+                tab_separator           " "
+
+                tab_sync_indicator       " "
+                tab_fullscreen_indicator " 󰊓"
+                tab_floating_indicator   " 󰹙"
+
+                // Claude Code tokens
+                command_claude_command   "bash /Users/q/.config/zellij/scripts/claude_tokens.sh"
+                command_claude_format    "#[fg=$accent] {stdout} #[fg=$muted]│ "
+                command_claude_interval  "300"
+                command_claude_rendermode "static"
+
+                // CPU usage
+                command_cpu_command  "bash /Users/q/.config/zellij/scripts/cpu.sh"
+                command_cpu_format      "#[fg=$green] {stdout} #[fg=$muted]│ "
+                command_cpu_interval    "5"
+                command_cpu_rendermode  "static"
+
+                // RAM usage
+                command_ram_command  "bash /Users/q/.config/zellij/scripts/ram.sh"
+                command_ram_format      "#[fg=$yellow] {stdout} #[fg=$muted]│ "
+                command_ram_interval    "5"
+                command_ram_rendermode  "static"
+
+                // Date/time
+                datetime          "#[fg=$muted]󰥔 {format}"
+                datetime_format   "%H:%M"
+                datetime_timezone "America/New_York"
+            }
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+}
