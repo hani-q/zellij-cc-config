@@ -16,7 +16,7 @@ fi
 
 # Fetch fresh data
 export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.bun/bin:$PATH"
-DATA=$(bunx better-ccusage daily --json --breakdown 2>/dev/null)
+DATA=$(timeout 10s better-ccusage daily --json --breakdown 2>/dev/null)
 
 if [ $? -ne 0 ] || [ -z "$DATA" ]; then
     echo "—"

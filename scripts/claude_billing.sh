@@ -16,7 +16,7 @@ fi
 
 # Fetch fresh data
 export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.bun/bin:$PATH"
-DATA=$(bunx better-ccusage blocks --json 2>/dev/null)
+DATA=$(timeout 10s better-ccusage blocks --json 2>/dev/null)
 
 if [ $? -ne 0 ] || [ -z "$DATA" ]; then
     echo "" > "$CACHE_FILE"

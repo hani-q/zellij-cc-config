@@ -87,13 +87,13 @@ layout {
                 // CPU usage
                 command_cpu_command  "bash /Users/q/.config/zellij/scripts/cpu.sh"
                 command_cpu_format      "#[fg=$green] {stdout} #[fg=$muted]│ "
-                command_cpu_interval    "5"
+                command_cpu_interval    "30"
                 command_cpu_rendermode  "static"
 
                 // RAM usage
                 command_ram_command  "bash /Users/q/.config/zellij/scripts/ram.sh"
                 command_ram_format      "#[fg=$yellow] {stdout}"
-                command_ram_interval    "5"
+                command_ram_interval    "30"
                 command_ram_rendermode  "static"
 
                 // Date/time
