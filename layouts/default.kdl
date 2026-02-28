@@ -2,22 +2,22 @@ layout {
     default_tab_template {
         pane size=2 borderless=true {
             plugin location="file:/Users/q/.config/zellij/plugins/zjstatus.wasm" {
-                // Claude dark palette
-                color_bg      "#2B2519"
-                color_fg      "#E8E0D0"
-                color_accent  "#DA7B4A"
-                color_muted   "#7A7260"
-                color_green   "#7FA87F"
-                color_blue    "#7B9CC0"
-                color_magenta "#B08AA0"
-                color_yellow  "#C4956A"
-                color_dark    "#1A1611"
-                color_subtle  "#3D3520"
+                // Catppuccin Latte palette
+                color_bg      "#eff1f5"
+                color_fg      "#4c4f69"
+                color_accent  "#8839ef"
+                color_muted   "#9ca0b0"
+                color_green   "#40a02b"
+                color_blue    "#1e66f5"
+                color_magenta "#ea76cb"
+                color_yellow  "#df8e1d"
+                color_dark    "#dce0e8"
+                color_subtle  "#ccd0da"
 
                 // Bar layout
                 format_left   "{mode} #[fg=$accent,bold]{session} #[fg=$muted]│ {tabs}"
                 format_center ""
-                format_right  "{command_cc_session}{command_session_tokens}{command_claude}{command_billing}{command_monthly}{command_cpu}{command_ram}"
+                format_right  "{command_cpu}{command_ram}"
                 format_space  ""
                 format_hide_on_overlength "false"
                 format_precedence "lrc"

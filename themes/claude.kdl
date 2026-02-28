@@ -1,28 +1,15 @@
 themes {
-    claude {
-        fg "#3D3929"
-        bg "#F9F6EE"
-        black "#3D3929"
-        red "#C4956A"
-        green "#DA7B4A"
-        yellow "#C4956A"
-        blue "#5A7BA5"
-        magenta "#9A6B8A"
-        cyan "#6B9A9A"
-        white "#F9F6EE"
-        orange "#DA7B4A"
-    }
-    claude-dark {
-        fg "#E8E0D0"
-        bg "#2B2519"
-        black "#1A1611"
-        red "#C4956A"
-        green "#DA7B4A"
-        yellow "#C4956A"
-        blue "#7B9CC0"
-        magenta "#B08AA0"
-        cyan "#7FB0B0"
-        white "#F9F6EE"
-        orange "#DA7B4A"
+    catppuccin-latte {
+        fg "#4c4f69"
+        bg "#eff1f5"
+        black "#dce0e8"
+        red "#d20f39"
+        green "#40a02b"
+        yellow "#df8e1d"
+        blue "#1e66f5"
+        magenta "#8839ef"
+        cyan "#179299"
+        white "#4c4f69"
+        orange "#fe640b"
     }
 }
